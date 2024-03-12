@@ -1,7 +1,7 @@
 # HILDA-rghh
 Convenience functions and wrappers for working with the HILDA dataset in R and python  
 
-A suggested workflow is:  
+A suggested workflow for R is:  
 
 Import the HILDA data and store it in a list  
 
