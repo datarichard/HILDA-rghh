@@ -28,9 +28,12 @@ for (pathtofile in path_to_hilda) {
   hilda <- append(hilda, list(df))
   cat('.')
 }
-
+```
+  
+Then use `gather_hilda` to extract the variables you need. The .codes argument takes a character vector of HILDA codes available at the [online data dictionary](https://hildaodd.app.unimelb.edu.au/srchVarnameUsingCategoriesCrossWave.aspx)  
+```
 # Gather the MHI-5 scores for each person for each year in a long dataframe
-mhi5 <- gather_hilda(hilda, "ghmh") %>%
+mhi5 <- gather_hilda(.datalist = hilda, .codes = "ghmh") %>%
   select(xwaveid, wave, mhi5 = val) %>%
   rowwise() %>%
   mutate(year = which(letters == wave) + 2000) %>%
