@@ -28,6 +28,13 @@ for (pathtofile in path_to_hilda) {
   hilda <- append(hilda, list(df))
   cat('.')
 }
+
+# Gather the MHI-5 scores for each person for each year in a long dataframe
+mhi5 <- gather_hilda(hilda, "ghmh") %>%
+  select(xwaveid, wave, mhi5 = val) %>%
+  rowwise() %>%
+  mutate(year = which(letters == wave) + 2000) %>%
+  ungroup()
 ```
 
 For a better HILDA package option see:  
