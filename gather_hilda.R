@@ -1,4 +1,4 @@
-gather_hilda <- function(df.list, var.codes) {
+gather_hilda <- function(.data, .codes) {
   
   # This function takes a list of hilda dataframes (1 for each wave) and hilda
   # variable codes, and returns a tibble in long format of all records, with the 
@@ -7,9 +7,9 @@ gather_hilda <- function(df.list, var.codes) {
   require(dplyr)
   require(haven)
   
-  for (df in df.list) { # for every wave
+  for (df in .data) { # for every wave
     waveid <- substr(colnames(df)[2],1,1) # get the waveid (a, b, c, ..p)
-    wave.codes <- paste0(waveid, var.codes) # update the variable codes
+    wave.codes <- paste0(waveid, .codes) # update the variable codes
     wave.codes <- c('xwaveid', wave.codes) # add xwaveid to track individuals
     
     
