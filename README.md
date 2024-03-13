@@ -37,7 +37,10 @@ Then use `gather_hilda` to extract the variables you need. The .codes argument t
 
 For example, gather the sex and MHI-5 scores for each person for each year in a long dataframe  
 ```
-mhi5 <- gather_hilda(.datalist = hilda, .codes = c("hgsex", "ghmh"))) %>%
+mhi5 <- gather_hilda(
+          .datalist = hilda,
+          .codes = c("hgsex", "ghmh"))
+        ) %>%
   spread(code, val)
 ```
 
