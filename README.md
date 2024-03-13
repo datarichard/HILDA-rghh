@@ -3,7 +3,7 @@ Convenience functions and wrappers for working with the HILDA dataset in R and p
 
 A suggested workflow for R is:  
 
-Import the HILDA data and store it in a list  
+The HILDA data is stored by wave, with a separate file for each survey wave. Import the HILDA data by wave and store it in a list  
 
 ```
 library(tidyverse)
@@ -34,8 +34,9 @@ for (pathtofile in path_to_hilda) {
 
   
 Then use `gather_hilda` to extract the variables you need. The .codes argument takes a character vector of HILDA codes available at the [online data dictionary](https://hildaodd.app.unimelb.edu.au/srchVarnameUsingCategoriesCrossWave.aspx)  
+
+For example, gather the sex and MHI-5 scores for each person for each year in a long dataframe  
 ```
-# Gather the sex and MHI-5 scores for each person for each year in a long dataframe
 mhi5 <- gather_hilda(.datalist = hilda, .codes = c("hgsex", "ghmh"))) %>%
   spread(code, val)
 ```
